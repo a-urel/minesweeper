@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  background: #c0c0c0;
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+  overflow: hidden;
+}
+
+#game {
+  padding: 6px;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+  border-right: 3px solid #808080;
+  border-bottom: 3px solid #808080;
+}
+
+/* Toolbar */
+#toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 6px;
+  margin-bottom: 6px;
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  background: #c0c0c0;
+  height: 40px;
+}
+
+/* Seven-segment LED display */
+.led-display {
+  display: flex;
+  background: #000;
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  padding: 2px 4px;
+  min-width: 52px;
+  justify-content: center;
+}
+
+.led-display .digit {
+  color: #ff0000;
+  font-family: 'Courier New', monospace;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1;
+  width: 14px;
+  text-align: center;
+}
+
+/* Smiley button */
+.smiley {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  padding: 0;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  background: #c0c0c0;
+  cursor: pointer;
+}
+
+.smiley:active {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+
+/* Grid */
+#grid-container {
+  border-top: 3px solid #808080;
+  border-left: 3px solid #808080;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  display: inline-grid;
+  line-height: 0;
+}
+
+/* Cells */
+.cell {
+  width: 24px;
+  height: 24px;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  background: #c0c0c0;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.cell.revealed {
+  border: 1px solid #808080;
+  background: #c0c0c0;
+  cursor: default;
+}
+
+.cell.flagged {
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  background: #c0c0c0;
+}
+
+.cell.mine {
+  background: #c0c0c0;
+}
+
+.cell.mine-triggered {
+  background: #ff0000;
+}
+
+.cell.mine-incorrect {
+  background: #c0c0c0;
+}
+
+/* Number colors */
+.cell.number-1 { color: #0000ff; }
+.cell.number-2 { color: #008000; }
+.cell.number-3 { color: #ff0000; }
+.cell.number-4 { color: #000080; }
+.cell.number-5 { color: #800000; }
+.cell.number-6 { color: #008080; }
+.cell.number-7 { color: #000000; }
+.cell.number-8 { color: #808080; }
+
+/* Pressed state for hidden cells */
+.cell.pressed {
+  border: 1px solid #808080;
+}

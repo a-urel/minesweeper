@@ -19,10 +19,10 @@
 
 **Purpose**: Initialize Electron Forge project with TypeScript, configure tooling, create directory structure
 
-- [ ] T001 Initialize Electron Forge project with TypeScript template and configure package.json scripts (start, test, test:watch, package, make) in package.json
-- [ ] T002 Configure TypeScript (tsconfig.json) and add Vitest as dev dependency with vitest.config.ts
-- [ ] T003 [P] Create source directory structure: src/main/, src/renderer/, src/game/, tests/unit/
-- [ ] T004 [P] Configure Electron Forge build settings in forge.config.ts
+- [X] T001 Initialize Electron Forge project with TypeScript template and configure package.json scripts (start, test, test:watch, package, make) in package.json
+- [X] T002 Configure TypeScript (tsconfig.json) and add Vitest as dev dependency with vitest.config.ts
+- [X] T003 [P] Create source directory structure: src/main/, src/renderer/, src/game/, tests/unit/
+- [X] T004 [P] Configure Electron Forge build settings in forge.config.ts
 
 ---
 
@@ -32,12 +32,12 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T005 Define CellState enum (Hidden, Revealed, Flagged), GameStatus enum (Idle, Playing, Won, Lost), Cell interface, DifficultyPreset interface, and GameState interface in src/game/state.ts
-- [ ] T006 [P] Define difficulty presets (Beginner 9×9/10, Intermediate 16×16/40, Expert 30×16/99), cell number colors, and window dimension constants in src/game/constants.ts
-- [ ] T007 [P] Create Electron preload script exposing IPC bridge (game:new-game, game:set-difficulty, window:resize channels) via contextBridge in src/renderer/preload.ts
-- [ ] T008 Create base Electron main process with BrowserWindow creation (non-resizable, Beginner size default) and preload script loading in src/main/main.ts
-- [ ] T009 [P] Create base HTML structure with toolbar area (mine counter, smiley button, timer), grid container, and link to styles in src/renderer/index.html
-- [ ] T010 [P] Create CSS with classic Minesweeper aesthetic: beveled cell borders (outset/inset), seven-segment LED counter styles, gray background, cell state classes (hidden, revealed, flagged, mine), number colors (blue=1, green=2, red=3, dark-blue=4, maroon=5, teal=6, black=7, gray=8) in src/renderer/styles.css
+- [X] T005 Define CellState enum (Hidden, Revealed, Flagged), GameStatus enum (Idle, Playing, Won, Lost), Cell interface, DifficultyPreset interface, and GameState interface in src/game/state.ts
+- [X] T006 [P] Define difficulty presets (Beginner 9×9/10, Intermediate 16×16/40, Expert 30×16/99), cell number colors, and window dimension constants in src/game/constants.ts
+- [X] T007 [P] Create Electron preload script exposing IPC bridge (game:new-game, game:set-difficulty, window:resize channels) via contextBridge in src/renderer/preload.ts
+- [X] T008 Create base Electron main process with BrowserWindow creation (non-resizable, Beginner size default) and preload script loading in src/main/main.ts
+- [X] T009 [P] Create base HTML structure with toolbar area (mine counter, smiley button, timer), grid container, and link to styles in src/renderer/index.html
+- [X] T010 [P] Create CSS with classic Minesweeper aesthetic: beveled cell borders (outset/inset), seven-segment LED counter styles, gray background, cell state classes (hidden, revealed, flagged, mine), number colors (blue=1, green=2, red=3, dark-blue=4, maroon=5, teal=6, black=7, gray=8) in src/renderer/styles.css
 
 **Checkpoint**: Foundation ready — Electron app launches with empty shell, all types defined, user story implementation can begin
 
@@ -53,16 +53,16 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T011 [P] [US1] Write board generation tests: createBoard returns correct dimensions, placeMines places exact mine count, first-click exclusion zone is mine-free, adjacency counts are correct in tests/unit/board.test.ts
-- [ ] T012 [P] [US1] Write revealCell tests: reveal numbered cell, reveal zero cell triggers flood fill, reveal mine transitions to Lost, reveal on Idle triggers mine placement and transitions to Playing in tests/unit/actions.test.ts
-- [ ] T013 [P] [US1] Write game state transition tests: Idle→Playing on first reveal, Playing→Lost on mine reveal, no actions allowed in Won/Lost states in tests/unit/state.test.ts
+- [X] T011 [P] [US1] Write board generation tests: createBoard returns correct dimensions, placeMines places exact mine count, first-click exclusion zone is mine-free, adjacency counts are correct in tests/unit/board.test.ts
+- [X] T012 [P] [US1] Write revealCell tests: reveal numbered cell, reveal zero cell triggers flood fill, reveal mine transitions to Lost, reveal on Idle triggers mine placement and transitions to Playing in tests/unit/actions.test.ts
+- [X] T013 [P] [US1] Write game state transition tests: Idle→Playing on first reveal, Playing→Lost on mine reveal, no actions allowed in Won/Lost states in tests/unit/state.test.ts
 
 ### Implementation for User Story 1
 
-- [ ] T014 [US1] Implement createBoard (empty grid), placeMines (random placement with first-click exclusion zone), and calculateAdjacency (neighbor mine counts) in src/game/board.ts
-- [ ] T015 [US1] Implement revealCell action: handle first click (deferred mine placement), reveal single cell, flood-fill for zero-adjacent cells, game-over on mine hit — all as pure functions returning new GameState in src/game/actions.ts
-- [ ] T016 [US1] Implement grid rendering: create cell DOM elements from board dimensions, update cell visual state (hidden/revealed/number), handle re-render after state changes in src/renderer/grid.ts
-- [ ] T017 [US1] Implement UI initialization: create initial GameState (Beginner, Idle), bind left-click events on grid cells, call revealCell on click, re-render grid after each action in src/renderer/app.ts
+- [X] T014 [US1] Implement createBoard (empty grid), placeMines (random placement with first-click exclusion zone), and calculateAdjacency (neighbor mine counts) in src/game/board.ts
+- [X] T015 [US1] Implement revealCell action: handle first click (deferred mine placement), reveal single cell, flood-fill for zero-adjacent cells, game-over on mine hit — all as pure functions returning new GameState in src/game/actions.ts
+- [X] T016 [US1] Implement grid rendering: create cell DOM elements from board dimensions, update cell visual state (hidden/revealed/number), handle re-render after state changes in src/renderer/grid.ts
+- [X] T017 [US1] Implement UI initialization: create initial GameState (Beginner, Idle), bind left-click events on grid cells, call revealCell on click, re-render grid after each action in src/renderer/app.ts
 
 **Checkpoint**: Core Minesweeper gameplay works — player can reveal cells, see numbers, trigger flood fill, and lose by clicking mines. First click is always safe.
 
@@ -78,13 +78,13 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T018 [P] [US2] Write toggleFlag tests: flag hidden cell increments flagCount, unflag decrements, flag on revealed cell does nothing, flag count can exceed mine count (negative counter) in tests/unit/actions.test.ts
+- [X] T018 [P] [US2] Write toggleFlag tests: flag hidden cell increments flagCount, unflag decrements, flag on revealed cell does nothing, flag count can exceed mine count (negative counter) in tests/unit/actions.test.ts
 
 ### Implementation for User Story 2
 
-- [ ] T019 [US2] Implement toggleFlag action: toggle CellState between Hidden and Flagged, update flagCount, prevent flagging revealed cells — pure function returning new GameState in src/game/actions.ts
-- [ ] T020 [US2] Implement mine counter display: render (mineCount - flagCount) in seven-segment LED style in src/renderer/controls.ts
-- [ ] T021 [US2] Add right-click (contextmenu) event handling on grid cells, call toggleFlag, update flag rendering and mine counter display, prevent left-click reveal on flagged cells in src/renderer/app.ts
+- [X] T019 [US2] Implement toggleFlag action: toggle CellState between Hidden and Flagged, update flagCount, prevent flagging revealed cells — pure function returning new GameState in src/game/actions.ts
+- [X] T020 [US2] Implement mine counter display: render (mineCount - flagCount) in seven-segment LED style in src/renderer/controls.ts
+- [X] T021 [US2] Add right-click (contextmenu) event handling on grid cells, call toggleFlag, update flag rendering and mine counter display, prevent left-click reveal on flagged cells in src/renderer/app.ts
 
 **Checkpoint**: Flagging works — player can flag/unflag cells, mine counter tracks remaining mines, flagged cells are protected.
 
@@ -100,13 +100,13 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T022 [P] [US3] Write win detection tests: revealing last non-mine cell transitions to Won, Won state locks all actions, verify revealedCount tracking in tests/unit/state.test.ts
+- [X] T022 [P] [US3] Write win detection tests: revealing last non-mine cell transitions to Won, Won state locks all actions, verify revealedCount tracking in tests/unit/state.test.ts
 
 ### Implementation for User Story 3
 
-- [ ] T023 [US3] Add win condition check to revealCell: after each reveal, check if revealedCount equals (rows × cols − mineCount), transition to Won if true in src/game/actions.ts
-- [ ] T024 [US3] Implement game-end rendering: on Lost show all mines (highlight clicked mine, show incorrectly flagged cells with X), on Won auto-flag remaining mines, lock board (disable click handlers) in src/renderer/grid.ts
-- [ ] T025 [US3] Update app.ts to check GameStatus before processing clicks (no actions in Won/Lost), trigger end-game rendering on status change in src/renderer/app.ts
+- [X] T023 [US3] Add win condition check to revealCell: after each reveal, check if revealedCount equals (rows × cols − mineCount), transition to Won if true in src/game/actions.ts
+- [X] T024 [US3] Implement game-end rendering: on Lost show all mines (highlight clicked mine, show incorrectly flagged cells with X), on Won auto-flag remaining mines, lock board (disable click handlers) in src/renderer/grid.ts
+- [X] T025 [US3] Update app.ts to check GameStatus before processing clicks (no actions in Won/Lost), trigger end-game rendering on status change in src/renderer/app.ts
 
 **Checkpoint**: Complete game loop — player can win by revealing all safe cells or lose by hitting a mine. Board locks appropriately.
 
@@ -120,10 +120,10 @@
 
 ### Implementation for User Story 4
 
-- [ ] T026 [P] [US4] Implement window sizing calculations (pixel width/height per difficulty based on cell size, toolbar height, border padding) in src/main/window.ts
-- [ ] T027 [US4] Add Game application menu with New Game (F2), difficulty radio items (Beginner/Intermediate/Expert), separator, and Exit — send game:new-game and game:set-difficulty IPC messages in src/main/main.ts
-- [ ] T028 [US4] Handle game:set-difficulty IPC in renderer: update difficulty preset, reset GameState to Idle with new dimensions, rebuild grid, send window:resize IPC back to main in src/renderer/app.ts
-- [ ] T029 [US4] Handle window:resize IPC in main process: resize BrowserWindow to requested dimensions in src/main/main.ts
+- [X] T026 [P] [US4] Implement window sizing calculations (pixel width/height per difficulty based on cell size, toolbar height, border padding) in src/main/window.ts
+- [X] T027 [US4] Add Game application menu with New Game (F2), difficulty radio items (Beginner/Intermediate/Expert), separator, and Exit — send game:new-game and game:set-difficulty IPC messages in src/main/main.ts
+- [X] T028 [US4] Handle game:set-difficulty IPC in renderer: update difficulty preset, reset GameState to Idle with new dimensions, rebuild grid, send window:resize IPC back to main in src/renderer/app.ts
+- [X] T029 [US4] Handle window:resize IPC in main process: resize BrowserWindow to requested dimensions in src/main/main.ts
 
 **Checkpoint**: All three difficulty levels work — menu selection changes grid size, window resizes, new game starts with correct mine count.
 
@@ -137,9 +137,9 @@
 
 ### Implementation for User Story 5
 
-- [ ] T030 [US5] Implement timer display: render elapsed seconds (0–999) in seven-segment LED style, provide update and reset methods in src/renderer/controls.ts
-- [ ] T031 [US5] Implement smiley face button: render four states (smile=Idle/Playing, surprised=mousedown, dead=Lost, sunglasses=Won), bind click to restart game in src/renderer/controls.ts
-- [ ] T032 [US5] Add timer logic in app: start setInterval on first click (Idle→Playing), stop on Won/Lost, cap at 999, reset on new game. Wire smiley click to reset GameState and re-render. Handle game:new-game IPC for menu restart in src/renderer/app.ts
+- [X] T030 [US5] Implement timer display: render elapsed seconds (0–999) in seven-segment LED style, provide update and reset methods in src/renderer/controls.ts
+- [X] T031 [US5] Implement smiley face button: render four states (smile=Idle/Playing, surprised=mousedown, dead=Lost, sunglasses=Won), bind click to restart game in src/renderer/controls.ts
+- [X] T032 [US5] Add timer logic in app: start setInterval on first click (Idle→Playing), stop on Won/Lost, cap at 999, reset on new game. Wire smiley click to reset GameState and re-render. Handle game:new-game IPC for menu restart in src/renderer/app.ts
 
 **Checkpoint**: Timer and controls work — timer counts from first click, smiley reflects game state, click smiley to restart.
 
@@ -155,12 +155,12 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T033 [P] [US6] Write chord tests: chord with correct flag count reveals unflagged neighbors, chord with insufficient flags does nothing, chord with misplaced flag triggers loss in tests/unit/actions.test.ts
+- [X] T033 [P] [US6] Write chord tests: chord with correct flag count reveals unflagged neighbors, chord with insufficient flags does nothing, chord with misplaced flag triggers loss in tests/unit/actions.test.ts
 
 ### Implementation for User Story 6
 
-- [ ] T034 [US6] Implement chord action: verify cell is revealed with number, count adjacent flags, if count matches cell number then reveal all unflagged hidden neighbors (may trigger flood fill or mine hit) — pure function returning new GameState in src/game/actions.ts
-- [ ] T035 [US6] Add chord click handling: detect click on revealed numbered cell, call chord action, re-render affected cells, check for win/loss in src/renderer/app.ts
+- [X] T034 [US6] Implement chord action: verify cell is revealed with number, count adjacent flags, if count matches cell number then reveal all unflagged hidden neighbors (may trigger flood fill or mine hit) — pure function returning new GameState in src/game/actions.ts
+- [X] T035 [US6] Add chord click handling: detect click on revealed numbered cell, call chord action, re-render affected cells, check for win/loss in src/renderer/app.ts
 
 **Checkpoint**: Chording works — experienced players can speed up gameplay by chording satisfied number cells.
 
@@ -170,9 +170,9 @@
 
 **Purpose**: Visual refinement, performance validation, and final integration testing
 
-- [ ] T036 [P] Refine CSS for classic Minesweeper visual fidelity: smiley face sprites (CSS-only), cell pressed state, toolbar beveled frame, counter digit alignment in src/renderer/styles.css
-- [ ] T037 [P] Validate performance: <100ms input response on all difficulties, <1s flood fill on Expert grid (480 cells)
-- [ ] T038 Run quickstart.md validation: npm start launches app, npm test passes all unit tests, npm run package creates distributable
+- [X] T036 [P] Refine CSS for classic Minesweeper visual fidelity: smiley face sprites (CSS-only), cell pressed state, toolbar beveled frame, counter digit alignment in src/renderer/styles.css
+- [X] T037 [P] Validate performance: <100ms input response on all difficulties, <1s flood fill on Expert grid (480 cells)
+- [X] T038 Run quickstart.md validation: npm start launches app, npm test passes all unit tests, npm run package creates distributable
 
 ---
 
