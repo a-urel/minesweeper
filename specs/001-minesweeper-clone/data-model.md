@@ -15,6 +15,18 @@ Represents the visual/interaction state of a single cell.
 | Revealed | Player has clicked to reveal this cell         |
 | Flagged  | Player has right-clicked to mark as mine       |
 
+### Derived Visual States (game over only)
+
+These are not stored in `CellState` — they are computed at render time when `GameStatus` is `Lost`:
+
+| Visual State      | Condition                                      | Rendering                          |
+|-------------------|------------------------------------------------|------------------------------------|
+| Triggered Mine    | Cell was clicked to cause the loss             | Red background with mine icon      |
+| Revealed Mine     | `hasMine: true` AND `state: Hidden`            | Mine icon on default background    |
+| Incorrect Flag    | `state: Flagged` AND `hasMine: false`          | Flag with red X overlay            |
+
+When `GameStatus` is `Won`, all cells with `hasMine: true` and `state: Hidden` are rendered as Flagged (auto-flag).
+
 ### Cell
 
 A single unit in the game grid.

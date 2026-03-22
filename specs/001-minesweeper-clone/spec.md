@@ -27,7 +27,7 @@ A player starts a new game and sees a grid of hidden cells. They click on cells 
 1. **Given** a new game has started, **When** the player clicks a hidden cell that is not a mine, **Then** the cell is revealed showing the count of adjacent mines (0-8)
 2. **Given** a new game has started, **When** the player clicks a hidden cell with zero adjacent mines, **Then** all connected zero-adjacent-mine cells and their numbered neighbors are automatically revealed (flood fill)
 3. **Given** a game is in progress, **When** the player clicks a cell containing a mine, **Then** the game ends, the clicked mine is highlighted, and all other mines are revealed
-4. **Given** the game has started, **When** the player makes their very first click, **Then** the clicked cell is guaranteed to be safe (not a mine)
+4. **Given** the game has started, **When** the player makes their very first click, **Then** the clicked cell and all adjacent cells are guaranteed to be safe (not mines)
 
 ---
 
