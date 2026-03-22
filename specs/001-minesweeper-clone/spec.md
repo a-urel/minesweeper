@@ -5,6 +5,13 @@
 **Status**: Draft
 **Input**: User description: "minesweeper: create a minesweeper clone. just like the one in windows games."
 
+## Clarifications
+
+### Session 2026-03-22
+
+- Q: What is the target platform for this greenfield project? → A: Desktop application using Electron (native window)
+- Q: Should the window be fixed-size or resizable? → A: Fixed window size per difficulty level (window resizes to fit grid, not user-resizable)
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Reveal Cells and Avoid Mines (Priority: P1)
@@ -110,7 +117,7 @@ When a revealed number cell has exactly the correct number of adjacent flags mat
 
 ### Edge Cases
 
-- What happens when the player resizes the browser window? The game grid should remain usable and visible.
+- The application window has a fixed size per difficulty level, automatically resizing when difficulty changes. The window is not user-resizable.
 - What happens when the player right-clicks on an already revealed cell? Nothing should happen.
 - What happens if all mines are accidentally placed such that the board is unsolvable? The first-click-safe guarantee and random placement should minimize this, though solvability is not guaranteed (matching classic Windows Minesweeper behavior).
 - What happens when the player tries to flag more cells than there are mines? The counter goes negative, and the game continues normally.
@@ -134,6 +141,7 @@ When a revealed number cell has exactly the correct number of adjacent flags mat
 - **FR-013**: System MUST prevent interaction with the grid after the game ends (win or loss)
 - **FR-014**: System MUST visually distinguish between: unrevealed cells, revealed cells, flagged cells, mines (on game over), and incorrectly-flagged cells (on game over)
 - **FR-015**: System MUST guarantee the first click is always safe (not a mine)
+- **FR-016**: System MUST display a fixed-size window that automatically resizes to fit the grid when difficulty changes; the window is not user-resizable
 
 ### Key Entities
 
@@ -162,4 +170,5 @@ When a revealed number cell has exactly the correct number of adjacent flags mat
 - Sound effects are out of scope for this feature
 - The game does not guarantee logical solvability of every generated board, matching classic Windows Minesweeper behavior
 - The "question mark" flag mode (cycling through flag -> question mark -> unflagged) is out of scope; only flag/unflag toggle is included
+- The game is delivered as a desktop application using Electron, running in a native window
 - The game uses a visual style inspired by the classic Windows Minesweeper but does not need to be pixel-perfect
